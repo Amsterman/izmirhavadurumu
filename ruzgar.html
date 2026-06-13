@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Çeşme Alaçatı Rüzgar Durumu – Kitesurf ve Windsurf Tahmini 2025</title>
+  <meta name="description" content="Çeşme ve Alaçatı anlık rüzgar hızı ve yönü. Kitesurf, windsurf ve yelken için rüzgar tahmini. İzmir bölgesi rüzgar durumu saatlik güncelleme." />
+  <meta name="keywords" content="çeşme rüzgar durumu, alaçatı rüzgar hızı, alaçatı kitesurf rüzgar, çeşme windsurf, izmir rüzgar tahmini, alaçatı imbat, çeşme imbat rüzgarı" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d6fc2" />
+  <link rel="canonical" href="https://izmirhavadurumu.com/ruzgar.html" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Çeşme Alaçatı Rüzgar Durumu","url":"https://izmirhavadurumu.com/ruzgar.html","description":"Çeşme, Alaçatı ve İzmir bölgesi anlık rüzgar hızı, yönü ve kitesurf tahmini."}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--blue:#0d6fc2;--light:#e6f3fc;--bg:#f2f8fd;--card:#fff;--border:#d0e8f8;--text:#102030;--muted:#5a7a92;--radius:16px;--wind:#1a6e3c;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    header{background:linear-gradient(160deg,#074d96,#0d6fc2,#1a6e3c);color:#fff;padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;}
+    .logo h1{font-size:16px;font-weight:700;}
+    .logo small{font-size:10px;opacity:.7;display:block;}
+    .htime{font-size:11px;opacity:.85;text-align:right;line-height:1.5;}
+    nav{background:#074d96;display:flex;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,0.1);}
+    nav::-webkit-scrollbar{display:none;}
+    nav a{color:rgba(255,255,255,.75);text-decoration:none;padding:9px 14px;font-size:12px;font-weight:600;white-space:nowrap;}
+    nav a.active,nav a:hover{color:#fff;background:rgba(255,255,255,.12);}
+    .ad-top{background:#fff;border-bottom:1px solid var(--border);padding:6px;text-align:center;}
+    .ad-box{display:inline-flex;align-items:center;justify-content:center;background:#f0f8ff;border:1px dashed #b0d4ee;border-radius:8px;color:#a0bdd0;font-size:11px;width:100%;max-width:360px;height:60px;}
+    .wrap{max-width:480px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;}
+    .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:14px 16px;overflow:hidden;}
+    .card-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:10px;}
+    .hero-wind{background:linear-gradient(140deg,#d4eedd,#bfe0cc);border-color:#8dcaaa;}
+    .wind-big{font-size:72px;font-weight:700;color:var(--wind);line-height:1;letter-spacing:-2px;}
+    .wind-big span{font-size:22px;font-weight:400;color:var(--muted);letter-spacing:0;}
+    .wind-row{display:flex;align-items:center;justify-content:space-between;margin-top:8px;}
+    .wind-meta{font-size:13px;color:var(--muted);line-height:1.9;}
+    .kite-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:700;margin-top:10px;}
+    .badge-perfect{background:#c8f0dc;color:#0a5c2e;}
+    .badge-good{background:#d4edff;color:#074d96;}
+    .badge-light{background:#fff3cc;color:#7a5800;}
+    .badge-none{background:#f5e0e0;color:#8b1a1a;}
+    .station-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+    .station-item{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:12px;}
+    .st-name{font-size:12px;font-weight:700;color:var(--text);}
+    .st-speed{font-size:28px;font-weight:700;color:var(--wind);line-height:1;margin:4px 0 2px;}
+    .st-unit{font-size:10px;color:var(--muted);}
+    .st-dir{font-size:12px;color:var(--muted);}
+    .hourly-wind{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+    .hourly-wind::-webkit-scrollbar{display:none;}
+    .hw-item{flex:0 0 62px;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:9px 4px;text-align:center;}
+    .hw-item.now{background:var(--wind);border-color:var(--wind);color:#fff;}
+    .hw-time{font-size:10px;opacity:.75;}
+    .hw-val{font-size:14px;font-weight:700;margin-top:5px;}
+    .hw-unit{font-size:9px;opacity:.7;}
+    .info-text{font-size:14px;color:var(--muted);line-height:1.8;}
+    .info-text h2{font-size:15px;color:var(--text);margin-bottom:8px;font-weight:700;}
+    .info-text p{margin-bottom:10px;}
+    footer{background:#07345a;color:rgba(255,255,255,.65);text-align:center;padding:20px 16px;font-size:12px;line-height:2;}
+    footer a{color:rgba(255,255,255,.85);text-decoration:none;}
+    #loading{text-align:center;padding:80px 20px;color:var(--muted);font-size:15px;}
+    .spin{width:36px;height:36px;border:4px solid var(--border);border-top-color:var(--wind);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px;}
+    @keyframes sp{to{transform:rotate(360deg);}}
+    #content{display:none;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span style="font-size:22px">💨</span><div><h1>Çeşme – Alaçatı Rüzgar</h1><small>izmirhavadurumu.com</small></div></a>
+  <div class="htime" id="htime"></div>
+</header>
+<nav>
+  <a href="/">🏠 Ana Sayfa</a>
+  <a href="/deniz.html">🌊 Deniz</a>
+  <a href="/ruzgar.html" class="active">💨 Rüzgar</a>
+  <a href="/cesme.html">⚓ Çeşme</a>
+  <a href="/alacati.html">🪁 Alaçatı</a>
+  <a href="/foca.html">🐬 Foça</a>
+  <a href="/urla.html">🍇 Urla</a>
+</nav>
+<div class="ad-top"><div class="ad-box">Reklam · 320×60</div></div>
+<div id="loading"><div class="spin"></div>Rüzgar bilgileri yükleniyor…</div>
+<div id="content">
+<div class="wrap">
+
+  <div class="card hero-wind">
+    <div class="card-label">Alaçatı – Anlık Rüzgar</div>
+    <div class="wind-big" id="alacati-speed">–<span> km/h</span></div>
+    <div class="wind-row">
+      <div class="wind-meta" id="alacati-meta"></div>
+      <canvas id="compass" width="76" height="76"></canvas>
+    </div>
+    <div id="kite-badge"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">İstasyon Karşılaştırması</div>
+    <div class="station-grid" id="stations"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Alaçatı – Saatlik Rüzgar Tahmini</div>
+    <div class="hourly-wind" id="hourly-wind"></div>
+  </div>
+
+  <div style="text-align:center"><div class="ad-box" style="height:100px">Reklam · 300×100</div></div>
+
+  <div class="card">
+    <div class="info-text">
+      <h2>Alaçatı Kitesurf ve Rüzgar Sörfü Rehberi</h2>
+      <p>Alaçatı, Türkiye'nin en önemli kitesurf ve rüzgar sörfü merkezi olarak dünya çapında tanınmaktadır. Körfezin coğrafi yapısı sayesinde kuzeyden esen <strong>imbat rüzgarı</strong> burada düzenli ve güçlü eser; ortalama hız 20–35 km/h arasında seyreder.</p>
+      <p>Kitesurf için ideal rüzgar hızı 20–40 km/h, windsurf için 15–35 km/h'dir. 40 km/h üzeri rüzgarlarda yalnızca deneyimli sporcuların suya girmesi önerilir.</p>
+      <h2>Çeşme Rüzgar Özellikleri</h2>
+      <p>Çeşme yarımadasında esen imbat rüzgarı, özellikle Temmuz–Eylül aylarında günde 6–8 saat eser. Bu düzenli rüzgar, Çeşme'yi yelkencilik ve deniz sporları için de vazgeçilmez kılar.</p>
+      <h2>Beaufort Skalası</h2>
+      <p>0–10 km/h: Sakin · 11–19: Hafif esinti · 20–28: Orta esinti · 29–38: Taze esinti · 39–49: Sert esinti · 50–61: Sert rüzgar · 62+: Fırtına</p>
+    </div>
+  </div>
+
+</div>
+</div>
+<footer>
+  <p>© 2025 izmirhavadurumu.com · <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+  <p><a href="/">Ana Sayfa</a> · <a href="/deniz.html">Deniz</a> · <a href="/cesme.html">Çeşme</a> · <a href="/alacati.html">Alaçatı</a></p>
+</footer>
+<script>
+const DIRS=['K','KKD','KD','DKD','D','DGD','GD','GGD','G','GGB','GB','BGB','B','BKB','KB','KKB'];
+function degToDir(d){return DIRS[Math.round(d/22.5)%16];}
+function pad(n){return String(n).padStart(2,'0');}
+function tfmt(d){return pad(d.getHours())+':'+pad(d.getMinutes());}
+function kiteBadge(spd){
+  if(spd>=20&&spd<=40)return['🪁 Mükemmel Kitesurf Koşulu','badge-perfect'];
+  if(spd>=12&&spd<20)return['🏄 İyi Windsurf Koşulu','badge-good'];
+  if(spd>40&&spd<=55)return['⚠️ Güçlü – Deneyimliler İçin','badge-light'];
+  if(spd>55)return['⛔ Çok Güçlü – Suya Girme','badge-none'];
+  return['💤 Rüzgar Zayıf – Spor Uygun Değil','badge-none'];
+}
+function drawCompass(deg,canvasId){
+  const c=document.getElementById(canvasId);if(!c)return;
+  const ctx=c.getContext('2d'),cx=38,cy=38,r=33;
+  ctx.clearRect(0,0,76,76);
+  ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.strokeStyle='#8dcaaa';ctx.lineWidth=2;ctx.stroke();
+  ['K','D','G','B'].forEach((l,i)=>{const a=i*Math.PI/2-Math.PI/2;ctx.fillStyle='#5a7a92';ctx.font='bold 9px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(l,cx+Math.cos(a)*24,cy+Math.sin(a)*24);});
+  const a=(deg-90)*Math.PI/180;
+  ctx.beginPath();ctx.moveTo(cx+Math.cos(a)*26,cy+Math.sin(a)*26);ctx.lineTo(cx+Math.cos(a+2.5)*9,cy+Math.sin(a+2.5)*9);ctx.lineTo(cx+Math.cos(a+Math.PI)*11,cy+Math.sin(a+Math.PI)*11);ctx.lineTo(cx+Math.cos(a-2.5)*9,cy+Math.sin(a-2.5)*9);ctx.closePath();ctx.fillStyle='#1a6e3c';ctx.fill();
+}
+function tick(){const n=new Date();document.getElementById('htime').innerHTML=n.toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'})+'<br><b style="font-size:15px">'+tfmt(n)+'</b>';}
+tick();setInterval(tick,30000);
+
+const STATIONS=[
+  {name:'Alaçatı',icon:'🪁',lat:38.2823,lon:26.3789},
+  {name:'Çeşme',icon:'⚓',lat:38.3232,lon:26.3068},
+  {name:'Foça',icon:'🐬',lat:38.6719,lon:26.7575},
+  {name:'İzmir Merkez',icon:'🏙',lat:38.4192,lon:27.1287},
+  {name:'Urla',icon:'🍇',lat:38.3213,lon:26.7638},
+  {name:'Seferihisar',icon:'🫒',lat:38.1978,lon:26.8357},
+];
+
+async function load(){
+  const [alacatiHourly,...stData]=await Promise.all([
+    fetch('https://api.open-meteo.com/v1/forecast?latitude=38.2823&longitude=26.3789&current=wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=wind_speed_10m,wind_direction_10m&wind_speed_unit=kmh&timezone=Europe%2FIstanbul&forecast_days=1').then(r=>r.json()),
+    ...STATIONS.map(s=>fetch('https://api.open-meteo.com/v1/forecast?latitude='+s.lat+'&longitude='+s.lon+'&current=wind_speed_10m,wind_direction_10m&wind_speed_unit=kmh&timezone=Europe%2FIstanbul').then(r=>r.json()))
+  ]);
+
+  const ac=alacatiHourly.current;
+  const spd=Math.round(ac.wind_speed_10m);
+  document.getElementById('alacati-speed').innerHTML=spd+'<span> km/h</span>';
+  document.getElementById('alacati-meta').innerHTML=
+    'Yön: <b>'+degToDir(ac.wind_direction_10m)+'</b> ('+Math.round(ac.wind_direction_10m)+'°)<br>'+
+    'Ani Rüzgar: <b>'+Math.round(ac.wind_gusts_10m)+' km/h</b>';
+  drawCompass(ac.wind_direction_10m,'compass');
+  const[label,cls]=kiteBadge(spd);
+  document.getElementById('kite-badge').innerHTML='<div class="kite-badge '+cls+'">'+label+'</div>';
+
+  // İstasyonlar
+  document.getElementById('stations').innerHTML=STATIONS.map((s,i)=>{
+    const d=stData[i];if(!d||!d.current)return'';
+    return'<div class="station-item"><div class="st-name">'+s.icon+' '+s.name+'</div><div class="st-speed">'+Math.round(d.current.wind_speed_10m)+'</div><div class="st-unit">km/h</div><div class="st-dir">'+degToDir(d.current.wind_direction_10m)+'</div></div>';
+  }).join('');
+
+  // Saatlik
+  const now=new Date();let hhtml='',cnt=0;
+  for(let i=0;i<alacatiHourly.hourly.time.length&&cnt<24;i++){
+    const t=new Date(alacatiHourly.hourly.time[i]);
+    if(t<now&&t.getHours()!==now.getHours())continue;
+    hhtml+='<div class="hw-item'+(cnt===0?' now':'')+'"><div class="hw-time">'+(cnt===0?'Şimdi':pad(t.getHours())+':00')+'</div><div class="hw-val">'+Math.round(alacatiHourly.hourly.wind_speed_10m[i])+'</div><div class="hw-unit">km/h</div></div>';
+    cnt++;
+  }
+  document.getElementById('hourly-wind').innerHTML=hhtml;
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('content').style.display='block';
+}
+load().catch(()=>{document.getElementById('loading').innerHTML='<p style="color:#c0392b">Yüklenemedi.</p>';});
+</script>
+</body>
+</html>

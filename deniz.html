@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>İzmir Deniz Sıcaklığı ve Dalga Boyu – Bugün 2025</title>
+  <meta name="description" content="İzmir deniz sıcaklığı anlık. Çeşme, Foça, Urla dalga boyu ve dalga periyodu. Yüzme ve dalış için deniz durumu tahmini." />
+  <meta name="keywords" content="izmir deniz sıcaklığı, çeşme deniz sıcaklığı, izmir dalga boyu, foça deniz durumu, urla deniz sıcaklığı, izmir yüzme koşulları" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d6fc2" />
+  <link rel="canonical" href="https://izmirhavadurumu.com/deniz.html" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"İzmir Deniz Sıcaklığı ve Dalga Boyu","url":"https://izmirhavadurumu.com/deniz.html","description":"İzmir bölgesi deniz sıcaklığı, dalga boyu ve dalga periyodu bilgileri."}</script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--blue:#0d6fc2;--teal:#0e8fa0;--light:#e6f3fc;--bg:#f2f8fd;--card:#fff;--border:#d0e8f8;--text:#102030;--muted:#5a7a92;--green:#1a9e6a;--radius:16px;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    header{background:linear-gradient(160deg,#074d96,#0d6fc2,#0e8fa0);color:#fff;padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;}
+    .logo h1{font-size:16px;font-weight:700;}
+    .logo small{font-size:10px;opacity:.7;display:block;}
+    .htime{font-size:11px;opacity:.85;text-align:right;line-height:1.5;}
+    nav{background:#074d96;display:flex;gap:0;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,0.1);}
+    nav::-webkit-scrollbar{display:none;}
+    nav a{color:rgba(255,255,255,.75);text-decoration:none;padding:9px 14px;font-size:12px;font-weight:600;white-space:nowrap;}
+    nav a.active,nav a:hover{color:#fff;background:rgba(255,255,255,.12);}
+    .ad-top{background:#fff;border-bottom:1px solid var(--border);padding:6px;text-align:center;}
+    .ad-box{display:inline-flex;align-items:center;justify-content:center;background:#f0f8ff;border:1px dashed #b0d4ee;border-radius:8px;color:#a0bdd0;font-size:11px;width:100%;max-width:360px;height:60px;}
+    .wrap{max-width:480px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;}
+    .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:14px 16px;overflow:hidden;}
+    .card-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:10px;}
+    .hero-sea{background:linear-gradient(140deg,#c8eef8,#b0dff5);border-color:#8ecfee;}
+    .big-temp{font-size:72px;font-weight:700;color:var(--teal);line-height:1;letter-spacing:-2px;}
+    .big-temp sup{font-size:26px;font-weight:400;vertical-align:top;margin-top:10px;display:inline-block;}
+    .sea-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px;}
+    .sea-item{background:rgba(255,255,255,.7);border-radius:12px;padding:10px 12px;}
+    .sea-lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;}
+    .sea-val{font-size:22px;font-weight:700;color:var(--teal);margin-top:2px;line-height:1.1;}
+    .sea-unit{font-size:11px;color:var(--muted);}
+    .sea-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;margin-top:4px;}
+    .badge-green{background:#d4f5e9;color:#0a6641;}
+    .badge-yellow{background:#fef3cc;color:#7a5800;}
+    .badge-red{background:#fde8e8;color:#8b1a1a;}
+    .beach-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}
+    .beach-item{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:12px;}
+    .beach-name{font-size:13px;font-weight:700;color:var(--text);}
+    .beach-temp{font-size:24px;font-weight:700;color:var(--teal);margin:4px 0 2px;}
+    .beach-wave{font-size:12px;color:var(--muted);}
+    .hourly-sea{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:3px;}
+    .hourly-sea::-webkit-scrollbar{display:none;}
+    .hs-item{flex:0 0 62px;background:var(--light);border:1px solid var(--border);border-radius:12px;padding:9px 4px;text-align:center;}
+    .hs-item.now{background:var(--teal);border-color:var(--teal);color:#fff;}
+    .hs-time{font-size:10px;opacity:.75;}
+    .hs-val{font-size:13px;font-weight:700;margin-top:5px;}
+    .hs-unit{font-size:9px;opacity:.7;}
+    .info-text{font-size:14px;color:var(--muted);line-height:1.8;}
+    .info-text h2{font-size:15px;color:var(--text);margin-bottom:8px;font-weight:700;}
+    .info-text p{margin-bottom:10px;}
+    footer{background:#07345a;color:rgba(255,255,255,.65);text-align:center;padding:20px 16px;font-size:12px;line-height:2;}
+    footer a{color:rgba(255,255,255,.85);text-decoration:none;}
+    #loading{text-align:center;padding:80px 20px;color:var(--muted);font-size:15px;}
+    .spin{width:36px;height:36px;border:4px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px;}
+    @keyframes sp{to{transform:rotate(360deg);}}
+    #content{display:none;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span style="font-size:22px">🌊</span><div><h1>İzmir Deniz Durumu</h1><small>izmirhavadurumu.com</small></div></a>
+  <div class="htime" id="htime"></div>
+</header>
+<nav>
+  <a href="/">🏠 Ana Sayfa</a>
+  <a href="/deniz.html" class="active">🌊 Deniz & Dalga</a>
+  <a href="/ruzgar.html">💨 Rüzgar</a>
+  <a href="/cesme.html">⚓ Çeşme</a>
+  <a href="/alacati.html">🪁 Alaçatı</a>
+  <a href="/foca.html">🐬 Foça</a>
+  <a href="/urla.html">🍇 Urla</a>
+</nav>
+<div class="ad-top"><div class="ad-box">Reklam · 320×60</div></div>
+<div id="loading"><div class="spin"></div>Deniz bilgileri yükleniyor…</div>
+<div id="content">
+<div class="wrap">
+
+  <div class="card hero-sea">
+    <div class="card-label">İzmir Körfezi – Deniz Sıcaklığı</div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <div><div class="big-temp" id="sea-temp">–<sup>°C</sup></div><div style="font-size:13px;color:var(--muted);margin-top:4px" id="swim-status">–</div></div>
+      <div style="font-size:64px">🌊</div>
+    </div>
+    <div class="sea-grid">
+      <div class="sea-item"><div class="sea-lbl">Dalga Yüksekliği</div><div class="sea-val" id="wave-h">–</div><div class="sea-unit">metre</div></div>
+      <div class="sea-item"><div class="sea-lbl">Dalga Periyodu</div><div class="sea-val" id="wave-p">–</div><div class="sea-unit">saniye</div></div>
+      <div class="sea-item"><div class="sea-lbl">Dalga Yönü</div><div class="sea-val" id="wave-d" style="font-size:16px;margin-top:6px">–</div></div>
+      <div class="sea-item"><div class="sea-lbl">Deniz Durumu</div><div class="sea-val" id="sea-st" style="font-size:14px;margin-top:6px">–</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Plaj & Koy Deniz Sıcaklıkları</div>
+    <div class="beach-grid" id="beach-grid"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-label">Saatlik Deniz Sıcaklığı Tahmini</div>
+    <div class="hourly-sea" id="hourly-sea"></div>
+  </div>
+
+  <div style="text-align:center"><div class="ad-box" style="height:100px">Reklam · 300×100</div></div>
+
+  <div class="card">
+    <div class="info-text">
+      <h2>İzmir Deniz Sıcaklığı Hakkında</h2>
+      <p>İzmir ve Ege kıyılarında deniz suyu sıcaklığı yaz aylarında 24–28°C'ye ulaşır. Çeşme yarımadası ve Foça koyları, sıcak ve berrak denizi ile yüzme ve snorkelling için ideal noktalardır.</p>
+      <p>Dalga boyu Ege'de genellikle 0.5–1.5 metre arasında seyreder. Alaçatı açıklarında kuzeyden esen Meltemi rüzgarı dalgaları 2 metreye çıkarabilir; bu durum kitesurf ve rüzgar sörfü için mükemmel koşullar yaratır.</p>
+      <h2>Yüzme İçin En İyi Aylar</h2>
+      <p>İzmir'de deniz yüzme için en uygun dönem Mayıs–Ekim arasıdır. En sıcak dönem Temmuz–Ağustos aylarıdır; deniz suyu 27–29°C'ye ulaşır.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+<footer>
+  <p>© 2025 izmirhavadurumu.com · <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+  <p><a href="/">Ana Sayfa</a> · <a href="/gizlilik.html">Gizlilik</a> · <a href="/ruzgar.html">Rüzgar</a></p>
+</footer>
+<script>
+const DIRS=['K','KKD','KD','DKD','D','DGD','GD','GGD','G','GGB','GB','BGB','B','BKB','KB','KKB'];
+function degToDir(d){return DIRS[Math.round(d/22.5)%16];}
+function pad(n){return String(n).padStart(2,'0');}
+function tfmt(d){return pad(d.getHours())+':'+pad(d.getMinutes());}
+function seaState(h){if(h<0.1)return'Düz 🪩';if(h<0.5)return'Sakin 😊';if(h<1.25)return'Az Dalgalı 🌊';if(h<2.5)return'Dalgalı ⚡';if(h<4)return'Sert 🌩';return'Çok Sert ⛔';}
+function swimStatus(t){if(t>=25)return'Mükemmel yüzme koşulu ✅';if(t>=22)return'Yüzme için uygun 👍';if(t>=19)return'Serin ama yüzülebilir 😅';return'Soğuk – yüzmek zor ❄️';}
+
+function tick(){const n=new Date();document.getElementById('htime').innerHTML=n.toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'})+'<br><b style="font-size:15px">'+tfmt(n)+'</b>';}
+tick(); setInterval(tick,30000);
+
+const BEACHES=[
+  {name:'Çeşme',lat:38.3232,lon:26.3068,icon:'⚓'},
+  {name:'Alaçatı',lat:38.2823,lon:26.3789,icon:'🪁'},
+  {name:'Foça',lat:38.6719,lon:26.7575,icon:'🐬'},
+  {name:'Urla',lat:38.3213,lon:26.7638,icon:'🍇'},
+  {name:'Seferihisar',lat:38.1978,lon:26.8357,icon:'🫒'},
+  {name:'Mordoğan',lat:38.5142,lon:26.6231,icon:'🏖'},
+];
+
+async function load(){
+  const marine='https://marine-api.open-meteo.com/v1/marine?latitude=38.3&longitude=26.8&current=sea_surface_temperature,wave_height,wave_period,wave_direction&hourly=sea_surface_temperature&timezone=Europe%2FIstanbul';
+  const [sea, ...beachData]=await Promise.all([
+    fetch(marine).then(r=>r.json()),
+    ...BEACHES.map(b=>fetch('https://marine-api.open-meteo.com/v1/marine?latitude='+b.lat+'&longitude='+b.lon+'&current=sea_surface_temperature,wave_height&timezone=Europe%2FIstanbul').then(r=>r.json()))
+  ]);
+
+  const sc=sea.current;
+  document.getElementById('sea-temp').innerHTML=Math.round(sc.sea_surface_temperature)+'<sup>°C</sup>';
+  document.getElementById('swim-status').textContent=swimStatus(sc.sea_surface_temperature);
+  document.getElementById('wave-h').textContent=sc.wave_height.toFixed(1);
+  document.getElementById('wave-p').textContent=Math.round(sc.wave_period);
+  document.getElementById('wave-d').textContent=degToDir(sc.wave_direction)+' ('+Math.round(sc.wave_direction)+'°)';
+  document.getElementById('sea-st').textContent=seaState(sc.wave_height);
+
+  // Plajlar
+  document.getElementById('beach-grid').innerHTML=BEACHES.map((b,i)=>{
+    const bd=beachData[i];
+    if(!bd||!bd.current)return'';
+    const t=Math.round(bd.current.sea_surface_temperature);
+    const w=bd.current.wave_height.toFixed(1);
+    return'<div class="beach-item"><div class="beach-name">'+b.icon+' '+b.name+'</div><div class="beach-temp">'+t+'°C</div><div class="beach-wave">Dalga: '+w+' m</div></div>';
+  }).join('');
+
+  // Saatlik
+  const now=new Date(); let hhtml='',cnt=0;
+  for(let i=0;i<sea.hourly.time.length&&cnt<24;i++){
+    const t=new Date(sea.hourly.time[i]);
+    if(t<now&&t.getHours()!==now.getHours())continue;
+    hhtml+='<div class="hs-item'+(cnt===0?' now':'')+'"><div class="hs-time">'+(cnt===0?'Şimdi':pad(t.getHours())+':00')+'</div><div class="hs-val">'+Math.round(sea.hourly.sea_surface_temperature[i])+'°</div><div class="hs-unit">°C</div></div>';
+    cnt++;
+  }
+  document.getElementById('hourly-sea').innerHTML=hhtml;
+
+  document.getElementById('loading').style.display='none';
+  document.getElementById('content').style.display='block';
+}
+load().catch(()=>{document.getElementById('loading').innerHTML='<p style="color:#c0392b">Yüklenemedi.</p>';});
+</script>
+</body>
+</html>
