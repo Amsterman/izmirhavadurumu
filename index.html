@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>İzmir Hava Durumu – Anlık ve 7 Günlük Tahmin</title>
+  <meta name="description" content="İzmir hava durumu anlık, saatlik ve 7 günlük tahmin. Sıcaklık, nem, rüzgar ve yağış bilgileri." />
+  <meta name="keywords" content="izmir hava durumu, izmir hava, izmir hava tahmini, izmir sıcaklık, bugün izmir hava" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="izmirhavadurumu.com" />
+  <meta name="theme-color" content="#0d6fc2" />
+  <meta property="og:title" content="İzmir Hava Durumu" />
+  <meta property="og:description" content="İzmir için anlık hava durumu ve 7 günlük tahmin." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://izmirhavadurumu.com" />
+  <meta property="og:locale" content="tr_TR" />
+  <link rel="canonical" href="https://izmirhavadurumu.com" />
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+  <!-- Google Search Console doğrulama -->
+  <!-- <meta name="google-site-verification" content="BURAYA_KODU_YAPISTIRIN" /> -->
+  <!-- Google AdSense -->
+  <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXX" crossorigin="anonymous"></script> -->
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"İzmir Hava Durumu","url":"https://izmirhavadurumu.com","inLanguage":"tr-TR"}
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:   #0d6fc2;
+      --blue2:  #1a8fe0;
+      --light:  #e6f3fc;
+      --bg:     #f2f8fd;
+      --card:   #ffffff;
+      --border: #d0e8f8;
+      --text:   #102030;
+      --muted:  #5a7a92;
+      --sun:    #f5a100;
+      --radius: 16px;
+    }
+
+    html { font-size: 16px; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(160deg, #074d96 0%, #0d6fc2 50%, #1a8fe0 100%);
+      color: #fff;
+      padding: 14px 16px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; color: #fff; }
+    .logo-icon { font-size: 26px; line-height: 1; }
+    .logo h1 { font-size: 17px; font-weight: 700; }
+    .logo small { font-size: 11px; opacity: 0.75; display: block; }
+    .header-time { font-size: 12px; opacity: 0.85; text-align: right; line-height: 1.5; }
+
+    /* ── AD ── */
+    .ad-top {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 6px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .ad-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #f0f8ff;
+      border: 1px dashed #b0d4ee;
+      border-radius: 8px;
+      color: #a0bdd0;
+      font-size: 11px;
+      font-weight: 500;
+      width: 100%;
+      max-width: 360px;
+      height: 60px;
+    }
+
+    /* ── WRAPPER ── */
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px;
+      overflow: hidden;
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(140deg, #dceefa 0%, #c8e4f8 100%);
+      border-color: #b0d8f5;
+    }
+
+    .hero-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hero-left {}
+    .hero-temp {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--blue);
+      letter-spacing: -2px;
+    }
+    .hero-temp sup { font-size: 28px; font-weight: 400; letter-spacing: 0; vertical-align: top; margin-top: 10px; display: inline-block; }
+    .hero-desc { font-size: 15px; color: var(--muted); margin-top: 4px; }
+    .hero-icon { font-size: 70px; line-height: 1; }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.7);
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+    .stat-lbl { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.4px; }
+    .stat-val { font-size: 20px; font-weight: 700; color: var(--blue); margin-top: 2px; line-height: 1.1; }
+    .stat-unit { font-size: 11px; color: var(--muted); }
+
+    /* ── SAATLIK ── */
+    .hourly {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding-bottom: 4px;
+    }
+    .hourly::-webkit-scrollbar { display: none; }
+
+    .h-item {
+      flex: 0 0 64px;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 10px 4px;
+      text-align: center;
+    }
+    .h-item.now {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff;
+    }
+    .h-time { font-size: 11px; opacity: 0.75; }
+    .h-icon { font-size: 22px; margin: 5px 0 3px; }
+    .h-temp { font-size: 14px; font-weight: 700; }
+
+    /* ── 7 GÜN ── */
+    .day-list { display: flex; flex-direction: column; gap: 6px; }
+
+    .day-row {
+      display: flex;
+      align-items: center;
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 14px;
+      gap: 0;
+    }
+    .day-name { font-size: 14px; font-weight: 600; width: 90px; flex-shrink: 0; }
+    .day-icon { font-size: 22px; width: 34px; flex-shrink: 0; text-align: center; }
+    .day-bar-wrap { flex: 1; height: 5px; background: #d0e8f8; border-radius: 3px; margin: 0 10px; min-width: 0; }
+    .day-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #4a90d9, #f5a100); }
+    .day-lo { font-size: 13px; color: var(--muted); width: 28px; text-align: right; flex-shrink: 0; }
+    .day-hi { font-size: 14px; font-weight: 700; color: var(--blue); width: 34px; text-align: right; flex-shrink: 0; }
+
+    /* ── İLÇELER ── */
+    .district-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .d-item {
+      background: var(--light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .d-name { font-size: 13px; font-weight: 600; }
+    .d-temp { font-size: 17px; font-weight: 700; color: var(--blue); }
+
+    /* ── GÜN IŞIĞI ── */
+    .sun-row {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+    .sun-item {}
+    .sun-emoji { font-size: 32px; }
+    .sun-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .sun-time { font-size: 18px; font-weight: 700; color: var(--sun); margin-top: 2px; }
+    .sun-divider { width: 1px; background: var(--border); }
+
+    /* ── AD MID ── */
+    .ad-mid {
+      text-align: center;
+    }
+    .ad-mid .ad-box {
+      width: 100%;
+      max-width: 360px;
+      height: 100px;
+    }
+
+    /* ── INFO ── */
+    .info-text { font-size: 14px; color: var(--muted); line-height: 1.8; }
+    .info-text h2 { font-size: 15px; color: var(--text); margin-bottom: 8px; font-weight: 700; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #07345a;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      padding: 20px 16px;
+      font-size: 12px;
+      line-height: 1.9;
+    }
+    footer a { color: rgba(255,255,255,0.85); text-decoration: none; }
+
+    /* ── LOADING ── */
+    #loading {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .spin {
+      width: 38px; height: 38px;
+      border: 4px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: sp 0.8s linear infinite;
+      margin: 0 auto 14px;
+    }
+    @keyframes sp { to { transform: rotate(360deg); } }
+    #content { display: none; }
+  </style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="/">
+    <span class="logo-icon">⛅</span>
+    <div>
+      <h1>İzmir Hava Durumu</h1>
+      <small>izmirhavadurumu.com</small>
+    </div>
+  </a>
+  <div class="header-time" id="htime"></div>
+</header>
+
+<!-- REKLAM - Banner -->
+<div class="ad-top">
+  <!-- AdSense kodunuzu buraya yapıştırın -->
+  <div class="ad-box">Reklam Alanı · 320×60</div>
+</div>
+
+<div id="loading">
+  <div class="spin"></div>
+  Hava bilgileri yükleniyor…
+</div>
+
+<div id="content">
+  <div class="wrap">
+
+    <!-- GÜNCEL -->
+    <div class="card hero">
+      <div class="card-label">İzmir · Şu An</div>
+      <div class="hero-top">
+        <div class="hero-left">
+          <div class="hero-temp" id="cur-temp">–<sup>°C</sup></div>
+          <div class="hero-desc" id="cur-desc">–</div>
+        </div>
+        <div class="hero-icon" id="cur-icon">🌤</div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-lbl">💧 Nem</div>
+          <div class="stat-val" id="cur-hum">–</div>
+          <div class="stat-unit">%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-lbl">💨 Rüzgar</div>
+          <div class="stat-val" id="cur-wind">–</div>
+          <div class="stat-unit">km/h</div>
+        </div>
+        <div class="stat">
+          <div class="stat-lbl">☁️ Bulut</div>
+          <div class="stat-val" id="cur-cloud">–</div>
+          <div class="stat-unit">%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAATLİK -->
+    <div class="card">
+      <div class="card-label">Saatlik Tahmin</div>
+      <div class="hourly" id="hourly"></div>
+    </div>
+
+    <!-- 7 GÜN -->
+    <div class="card">
+      <div class="card-label">7 Günlük Tahmin</div>
+      <div class="day-list" id="daily"></div>
+    </div>
+
+    <!-- GÜN IŞIĞI -->
+    <div class="card">
+      <div class="card-label">Gün Işığı</div>
+      <div class="sun-row">
+        <div class="sun-item">
+          <div class="sun-emoji">🌅</div>
+          <div class="sun-lbl">Gün Doğuşu</div>
+          <div class="sun-time" id="sunrise">–</div>
+        </div>
+        <div class="sun-divider"></div>
+        <div class="sun-item">
+          <div class="sun-emoji">🌇</div>
+          <div class="sun-lbl">Gün Batışı</div>
+          <div class="sun-time" id="sunset" style="color:var(--blue)">–</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REKLAM - Orta -->
+    <div class="ad-mid">
+      <!-- AdSense kodunuzu buraya yapıştırın -->
+      <div class="ad-box" style="height:100px;">Reklam Alanı · 300×100</div>
+    </div>
+
+    <!-- İLÇELER -->
+    <div class="card">
+      <div class="card-label">İzmir İlçeleri</div>
+      <div class="district-grid" id="districts"></div>
+    </div>
+
+    <!-- SEO -->
+    <div class="card">
+      <div class="info-text">
+        <h2>İzmir Hava Durumu Hakkında</h2>
+        <p>İzmir, Ege kıyısında Akdeniz iklimiyle tanınan Türkiye'nin üçüncü büyük şehridir. Yazları sıcak ve kurak, kışları ılık ve yağışlı geçer. Yıllık ortalama sıcaklık 17–18°C civarındadır. Veriler Open-Meteo servisi ile anlık güncellenmektedir.</p>
+      </div>
+    </div>
+
+  </div><!-- /wrap -->
+</div><!-- /content -->
+
+<footer>
+  <p>© 2025 izmirhavadurumu.com</p>
+  <p>Veriler: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a></p>
+  <p><a href="/gizlilik.html">Gizlilik Politikası</a> · <a href="/hakkinda.html">Hakkında</a></p>
+</footer>
+
+<script>
+const LAT = 38.4192, LON = 27.1287;
+const DAYS = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+const WMO = {
+  0:['Açık','☀️'], 1:['Çoğunlukla Açık','🌤'], 2:['Parçalı Bulutlu','⛅'],
+  3:['Kapalı','☁️'], 45:['Sisli','🌫'], 48:['Dondurucu Sis','🌫'],
+  51:['Hafif Çisenti','🌦'], 53:['Çisenti','🌦'], 55:['Yoğun Çisenti','🌧'],
+  61:['Hafif Yağmur','🌧'], 63:['Yağmur','🌧'], 65:['Şiddetli Yağmur','🌧'],
+  71:['Hafif Kar','🌨'], 73:['Kar','❄️'], 75:['Yoğun Kar','❄️'],
+  80:['Sağanak','⛈'], 81:['Kuvvetli Sağanak','⛈'], 95:['Fırtına','⛈'], 96:['Dolu','⛈']
+};
+
+function wmo(code) { return WMO[code] || ['Bilinmiyor','🌡']; }
+function pad(n) { return String(n).padStart(2,'0'); }
+function tfmt(d) { return pad(d.getHours())+':'+pad(d.getMinutes()); }
+
+function tick() {
+  const n = new Date();
+  document.getElementById('htime').innerHTML =
+    n.toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'}) +
+    '<br><b style="font-size:16px">' + tfmt(n) + '</b>';
+}
+tick(); setInterval(tick, 30000);
+
+async function load() {
+  const url = 'https://api.open-meteo.com/v1/forecast' +
+    '?latitude=' + LAT + '&longitude=' + LON +
+    '&current=temperature_2m,relative_humidity_2m,wind_speed_10m,cloud_cover,weather_code' +
+    '&hourly=temperature_2m,weather_code' +
+    '&daily=weather_code,temperature_2m_max,temperature_2m_min,sunrise,sunset' +
+    '&wind_speed_unit=kmh&timezone=Europe%2FIstanbul&forecast_days=7';
+
+  const d = await fetch(url).then(r => r.json());
+
+  // Güncel
+  const c = d.current;
+  const [desc, icon] = wmo(c.weather_code);
+  document.getElementById('cur-temp').innerHTML = Math.round(c.temperature_2m) + '<sup>°C</sup>';
+  document.getElementById('cur-desc').textContent = desc;
+  document.getElementById('cur-icon').textContent = icon;
+  document.getElementById('cur-hum').textContent = c.relative_humidity_2m;
+  document.getElementById('cur-wind').textContent = Math.round(c.wind_speed_10m);
+  document.getElementById('cur-cloud').textContent = c.cloud_cover;
+
+  // Saatlik
+  const now = new Date();
+  let hhtml = '', cnt = 0;
+  for (let i = 0; i < d.hourly.time.length && cnt < 24; i++) {
+    const t = new Date(d.hourly.time[i]);
+    if (t < now && t.getHours() !== now.getHours()) continue;
+    const [,hicon] = wmo(d.hourly.weather_code[i]);
+    hhtml += '<div class="h-item' + (cnt===0?' now':'') + '">' +
+      '<div class="h-time">' + (cnt===0?'Şimdi':pad(t.getHours())+':00') + '</div>' +
+      '<div class="h-icon">' + hicon + '</div>' +
+      '<div class="h-temp">' + Math.round(d.hourly.temperature_2m[i]) + '°</div>' +
+      '</div>';
+    cnt++;
+  }
+  document.getElementById('hourly').innerHTML = hhtml;
+
+  // 7 Gün
+  const temps = [...d.daily.temperature_2m_max, ...d.daily.temperature_2m_min];
+  const mn = Math.min(...temps), mx = Math.max(...temps), rng = mx - mn || 1;
+  let dhtml = '';
+  for (let i = 0; i < d.daily.time.length; i++) {
+    const dt = new Date(d.daily.time[i] + 'T12:00:00');
+    const name = i===0?'Bugün':i===1?'Yarın':DAYS[dt.getDay()];
+    const [,dicon] = wmo(d.daily.weather_code[i]);
+    const lo = Math.round(d.daily.temperature_2m_min[i]);
+    const hi = Math.round(d.daily.temperature_2m_max[i]);
+    const left = ((lo-mn)/rng*100).toFixed(1);
+    const width = Math.max(((hi-lo)/rng*100), 5).toFixed(1);
+    dhtml += '<div class="day-row">' +
+      '<div class="day-name">' + name + '</div>' +
+      '<div class="day-icon">' + dicon + '</div>' +
+      '<div class="day-bar-wrap"><div class="day-bar" style="margin-left:'+left+'%;width:'+width+'%"></div></div>' +
+      '<div class="day-lo">' + lo + '°</div>' +
+      '<div class="day-hi">' + hi + '°</div>' +
+      '</div>';
+  }
+  document.getElementById('daily').innerHTML = dhtml;
+
+  // Gün doğuşu/batışı
+  document.getElementById('sunrise').textContent = tfmt(new Date(d.daily.sunrise[0]));
+  document.getElementById('sunset').textContent  = tfmt(new Date(d.daily.sunset[0]));
+
+  // İlçeler
+  const base = c.temperature_2m;
+  const ilceler = [
+    ['Konak',0],['Karşıyaka',-0.5],['Bornova',1],['Buca',0.8],
+    ['Bayraklı',-0.2],['Çiğli',-0.8],['Narlıdere',-1.2],['Balçova',-0.6],
+    ['Gaziemir',1.2],['Menderes',1.5],['Torbalı',2],['Kemalpaşa',1.8]
+  ];
+  document.getElementById('districts').innerHTML = ilceler.map(([n,o]) =>
+    '<div class="d-item"><span class="d-name">'+n+'</span><span class="d-temp">'+Math.round(base+o)+'°</span></div>'
+  ).join('');
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display = 'block';
+}
+
+load().catch(() => {
+  document.getElementById('loading').innerHTML = '<p style="color:#c0392b">Yüklenemedi. Sayfayı yenileyin.</p>';
+});
+</script>
+</body>
+</html>
