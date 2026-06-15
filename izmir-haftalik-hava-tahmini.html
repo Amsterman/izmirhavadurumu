@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>İzmir Haftalık Hava Tahmini – Bu Hafta İzmir Hava Durumu 2025</title>
+  <meta name="description" content="İzmir haftalık hava tahmini. Bu hafta İzmir hava durumu, günlük sıcaklık, yağış ve rüzgar bilgileri. İzmir 7 günlük hava." />
+  <meta name="keywords" content="izmir haftalık hava tahmini, izmir bu hafta hava durumu, izmir 7 günlük hava, izmir hava durumu bu hafta" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0d6fc2" />
+  <link rel="canonical" href="https://izmirhavadurumu.com/izmir-haftalik-hava-tahmini.html" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--blue:#0d6fc2;--light:#e6f3fc;--bg:#f2f8fd;--card:#fff;--border:#d0e8f8;--text:#102030;--muted:#5a7a92;--radius:16px;}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
+    header{background:linear-gradient(160deg,#074d96,#0d6fc2,#1a8fe0);color:#fff;padding:14px 16px 10px;display:flex;align-items:center;justify-content:space-between;}
+    .logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff;}
+    .logo h2{font-size:15px;font-weight:700;}
+    .logo small{font-size:10px;opacity:.7;display:block;}
+    .htime{font-size:11px;opacity:.85;text-align:right;line-height:1.5;}
+    nav{background:#074d96;display:flex;overflow-x:auto;scrollbar-width:none;border-top:1px solid rgba(255,255,255,0.1);}
+    nav::-webkit-scrollbar{display:none;}
+    nav a{color:rgba(255,255,255,.75);text-decoration:none;padding:9px 14px;font-size:12px;font-weight:600;white-space:nowrap;}
+    nav a.active,nav a:hover{color:#fff;background:rgba(255,255,255,.12);}
+    .ad-top{background:#fff;border-bottom:1px solid var(--border);padding:6px;text-align:center;}
+    .ad-box{display:inline-flex;align-items:center;justify-content:center;background:#f0f8ff;border:1px dashed #b0d4ee;border-radius:8px;color:#a0bdd0;font-size:11px;width:100%;max-width:360px;height:60px;}
+    .wrap{max-width:480px;margin:0 auto;padding:12px;display:flex;flex-direction:column;gap:12px;}
+    .card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);padding:14px 16px;overflow:hidden;}
+    .hero{background:linear-gradient(140deg,#dceefa,#c8e4f8);border-color:#b0d8f5;}
+    footer{background:#07345a;color:rgba(255,255,255,.65);text-align:center;padding:20px 16px;font-size:12px;line-height:2;}
+    footer a{color:rgba(255,255,255,.85);text-decoration:none;}
+    #loading{text-align:center;padding:80px 20px;color:var(--muted);font-size:15px;}
+    .spin{width:36px;height:36px;border:4px solid var(--border);border-top-color:var(--blue);border-radius:50%;animation:sp .8s linear infinite;margin:0 auto 14px;}
+    @keyframes sp{to{transform:rotate(360deg);}}
+    #content{display:none;}
+  </style>
+</head>
+<body>
+<header>
+  <a class="logo" href="/"><span style="font-size:22px">⛅</span><div><h2>İzmir Hava Durumu</h2><small>izmirhavadurumu.com</small></div></a>
+  <div class="htime" id="htime"></div>
+</header>
+<nav>
+  <a href="/">🏠 Ana Sayfa</a>
+  <a href="/deniz.html">🌊 Deniz</a>
+  <a href="/ruzgar.html">💨 Rüzgar</a>
+  <a href="/ilceler.html">📍 İlçeler</a>
+  <a href="/15-gunluk.html">📅 15 Günlük</a>
+  <a href="/izmir-haftalik-hava-tahmini.html" class="active">📌 Haftalık</a>
+</nav>
+<div class="ad-top"><div class="ad-box">Reklam · 320×60</div></div>
+<div id="loading"><div class="spin"></div>Yükleniyor…</div>
+<div id="content">
+<div class="wrap">
+
+    <section class="card hero" style="background:linear-gradient(140deg,#dceefa,#c8e4f8);border-color:#b0d8f5;">
+      <h1 style="font-size:18px;font-weight:700;color:var(--blue);margin-bottom:4px;">İzmir Haftalık Hava Tahmini</h1>
+      <div id="hafta-ozet" style="font-size:13px;color:var(--muted);margin-bottom:12px;"></div>
+      <div id="haftalik-list" style="display:flex;flex-direction:column;gap:7px;"></div>
+    </section>
+
+    <section class="card">
+      <h2 style="font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:12px;">Haftalık Özet</h2>
+      <div id="hafta-summary" style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;"></div>
+    </section>
+
+    <section class="card">
+      <h2 style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:12px;">İzmir Bu Hafta Hava Durumu Hakkında</h2>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-bottom:10px;">İzmir haftalık hava tahmini, ECMWF ve GFS meteoroloji modellerinden derlenen Open-Meteo verileri kullanılarak hazırlanmaktadır. İlk 3 günlük tahminler çok yüksek doğrulukla sunulurken, 4–7 günlük tahminler genel eğilimi yansıtmaktadır.</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.8;">İzmir'de haftalık hava değişimleri özellikle sonbahar ve ilkbahar aylarında belirgindir. Kış haftalarında cephe sistemleri İzmir'e yağış getirebilirken, yaz haftalarında hava genellikle sakin ve güneşli seyreder.</p>
+    </section>
+  <div style="text-align:center"><div class="ad-box" style="height:100px">Reklam · 300×100</div></div>
+</div>
+</div>
+<footer>
+  <p>© 2025 izmirhavadurumu.com · <a href="https://open-meteo.com" target="_blank" rel="noopener noreferrer">Open-Meteo</a></p>
+  <p><a href="/">Ana Sayfa</a> · <a href="/15-gunluk.html">15 Günlük</a> · <a href="/gizlilik.html">Gizlilik</a> · <a href="/iletisim.html">İletişim</a></p>
+</footer>
+<script>
+const WMO={0:['Açık','☀️'],1:['Çoğunlukla Açık','🌤'],2:['Parçalı Bulutlu','⛅'],3:['Kapalı','☁️'],45:['Sisli','🌫'],51:['Hafif Çisenti','🌦'],53:['Çisenti','🌦'],61:['Hafif Yağmur','🌧'],63:['Yağmur','🌧'],65:['Şiddetli Yağmur','🌧'],80:['Sağanak','⛈'],95:['Fırtına','⛈']};
+function wmo(c){return WMO[c]||['Bilinmiyor','🌡'];}
+function pad(n){return String(n).padStart(2,'0');}
+function tfmt(d){return pad(d.getHours())+':'+pad(d.getMinutes());}
+function tick(){const n=new Date();document.getElementById('htime').innerHTML=n.toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'})+'<br><b style="font-size:15px">'+tfmt(n)+'</b>';}
+tick();setInterval(tick,30000);
+async function load(){
+  let wx;
+  try{
+    wx=await fetch('https://api.open-meteo.com/v1/forecast?latitude=38.4192&longitude=27.1287&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,wind_speed_10m_max&wind_speed_unit=kmh&timezone=Europe%2FIstanbul&forecast_days=7').then(r=>r.json());
+  }catch(e){
+    document.getElementById('loading').innerHTML='<p style="color:#c0392b">Yüklenemedi.</p>';return;
+  }
+
+  const d=wx.daily;
+  const DAYS3=['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
+  const ts=[...d.temperature_2m_max,...d.temperature_2m_min],mn=Math.min(...ts),mx2=Math.max(...ts),rng=mx2-mn||1;
+  let hhtml='';
+  for(let i=0;i<d.time.length;i++){
+    const dt=new Date(d.time[i]+'T12:00:00');
+    const nm=i===0?'Bugün':i===1?'Yarın':DAYS3[dt.getDay()];
+    const[desc,ikon]=wmo(d.weather_code[i]);
+    const lo=Math.round(d.temperature_2m_min[i]),hi=Math.round(d.temperature_2m_max[i]);
+    const left=((lo-mn)/rng*100).toFixed(1),width=Math.max((hi-lo)/rng*100,5).toFixed(1);
+    const yagis=d.precipitation_sum[i]||0;
+    hhtml+='<div style="display:flex;align-items:center;background:rgba(255,255,255,0.65);border-radius:11px;padding:10px 12px;gap:6px;">'
+      +'<div style="font-size:13px;font-weight:600;width:80px;flex-shrink:0;">'+nm+'</div>'
+      +'<div style="font-size:20px;width:28px;flex-shrink:0;text-align:center;">'+ikon+'</div>'
+      +'<div style="flex:1;height:4px;background:#c8dff0;border-radius:2px;margin:0 6px;min-width:0;"><div style="height:100%;border-radius:2px;background:linear-gradient(90deg,#4a90d9,#f5a100);margin-left:'+left+'%;width:'+width+'%;"></div></div>'
+      +'<div style="font-size:12px;color:var(--muted);width:26px;text-align:right;flex-shrink:0;">'+lo+'°</div>'
+      +'<div style="font-size:13px;font-weight:700;color:var(--blue);width:30px;text-align:right;flex-shrink:0;">'+hi+'°</div>'
+      +(yagis>0?'<div style="font-size:11px;color:#4a90d9;width:36px;text-align:right;flex-shrink:0;">💧'+yagis.toFixed(0)+'mm</div>':'<div style="width:36px;"></div>')
+      +'</div>';
+  }
+  document.getElementById('haftalik-list').innerHTML=hhtml;
+  const avgMax=(d.temperature_2m_max.reduce((a,b)=>a+b,0)/d.temperature_2m_max.length).toFixed(1);
+  const toplamYagis=d.precipitation_sum.reduce((a,b)=>a+(b||0),0).toFixed(1);
+  const maxRuzgar=Math.round(Math.max(...d.wind_speed_10m_max));
+  const yagisliGun=d.precipitation_sum.filter(p=>p>0).length;
+  document.getElementById('hafta-summary').innerHTML=
+    '<div style="background:var(--light);border:1px solid var(--border);border-radius:11px;padding:10px 12px;"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;">Ort. Yüksek</div><div style="font-size:20px;font-weight:700;color:var(--blue);">'+avgMax+'°</div></div>'
+    +'<div style="background:var(--light);border:1px solid var(--border);border-radius:11px;padding:10px 12px;"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;">Toplam Yağış</div><div style="font-size:20px;font-weight:700;color:var(--blue);">'+toplamYagis+'mm</div></div>'
+    +'<div style="background:var(--light);border:1px solid var(--border);border-radius:11px;padding:10px 12px;"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;">Max Rüzgar</div><div style="font-size:20px;font-weight:700;color:var(--blue);">'+maxRuzgar+'</div><div style="font-size:10px;color:var(--muted);">km/h</div></div>'
+    +'<div style="background:var(--light);border:1px solid var(--border);border-radius:11px;padding:10px 12px;"><div style="font-size:10px;color:var(--muted);text-transform:uppercase;">Yağışlı Gün</div><div style="font-size:20px;font-weight:700;color:var(--blue);">'+yagisliGun+'</div><div style="font-size:10px;color:var(--muted);">/ 7 gün</div></div>';
+  document.getElementById('hafta-ozet').textContent='Ortalama '+avgMax+'°C · Yağışlı gün: '+yagisliGun;
+  document.getElementById('loading').style.display='none';
+  document.getElementById('content').style.display='block';
+}
+load();
+</script>
+</body>
+</html>
